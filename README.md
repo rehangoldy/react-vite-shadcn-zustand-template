@@ -1,92 +1,92 @@
-## Template Frontend React + Vite + Tailwind CSS + shadcn/ui + Zustand
+## React + Vite + Tailwind CSS + shadcn/ui + Zustand Frontend Template
 
-Template ini adalah kerangka kerja frontend yang sudah dikonfigurasi untuk membangun aplikasi React modern dengan:
+This repository is a preconfigured frontend template for building modern React applications with:
 
-- **Vite** sebagai bundler (cepat, HMR, siap produksi)
+- **Vite** as the bundler (fast, HMR, production-ready)
 - **React + TypeScript**
-- **Tailwind CSS v4** sebagai utility-first CSS
-- **shadcn/ui + Radix UI** sebagai library komponen yang bisa dikustom
-- **Zustand** untuk global state management
-- **React Router DOM** untuk routing
+- **Tailwind CSS v4** as a utility-first CSS framework
+- **shadcn/ui + Radix UI** as a customizable component library
+- **Zustand** for global state management
+- **React Router DOM** for routing
 
-Template ini didesain supaya bisa langsung dipakai sebagai base project atau di-clone untuk berbagai aplikasi web lain dengan struktur dan pola yang konsisten.
-
----
-
-## Fitur Utama
-
-- **Konfigurasi Vite siap multi-environment** (`VITE_APP_MODE`, `VITE_APP_URL`, proxy `/api`)
-- **Alias path terstruktur** (`@`, `@shared-component`, `@shared-hooks`, `@shared-stores`, dll)
-- **Integrasi Tailwind v4 + shadcn/ui** (token seperti `bg-primary`, `text-muted-foreground`, `container`, dll)
-- **Struktur folder `shared`** untuk komponen, hooks, stores, dan utilitas yang bisa direuse
-- **Contoh landing page** dengan efek parallax dan komponen `NavigationMenu` dari shadcn/ui
-- **Siap ditambahkan Zustand store** untuk state global (theme, auth, UI state, dsb)
+The template is designed to be used directly as a base project or cloned and adapted for other web applications with a consistent structure and patterns.
 
 ---
 
-## Stack Teknologi
+## Key Features
+
+- **Vite configuration ready for multiple environments** (`VITE_APP_MODE`, `VITE_APP_URL`, `/api` proxy)
+- **Structured path aliases** (`@`, `@shared-component`, `@shared-hooks`, `@shared-stores`, etc.)
+- **Tailwind v4 + shadcn/ui integration** (tokens like `bg-primary`, `text-muted-foreground`, `container`, etc.)
+- **`shared` folder structure** for reusable components, hooks, stores, and utilities
+- **Sample landing page** with parallax effect and `NavigationMenu` component from shadcn/ui
+- **Ready for Zustand stores** to manage global state (theme, auth, UI state, etc.)
+
+---
+
+## Tech Stack
 
 - **Core**
   - React `^19`
   - TypeScript `~5.9`
-  - Vite `^7` (plugin `@vitejs/plugin-react-swc`)
+  - Vite `^7` (with `@vitejs/plugin-react-swc`)
 
 - **Styling & UI**
   - Tailwind CSS `^4` + `@tailwindcss/vite`
-  - shadcn/ui (berbasis Radix UI)
-  - `clsx` + `tailwind-merge` (helper `cn` di `src/lib/utils.ts`)
-  - `lucide-react` untuk ikon
+  - shadcn/ui (built on top of Radix UI)
+  - `clsx` + `tailwind-merge` (the `cn` helper in `src/lib/utils.ts`)
+  - `lucide-react` for icons
 
-- **State Management & Form**
+- **State Management & Forms**
   - Zustand `^5`
-  - React Hook Form + Zod untuk form & validasi
+  - React Hook Form + Zod for forms and validation
 
-- **Routing & Lain-lain**
+- **Routing & Utilities**
   - React Router DOM `^7`
-  - Axios untuk HTTP client
-  - `react-day-picker`, `recharts`, `sonner`, `cmdk`, dll sebagai utilitas UI tambahan
+  - Axios for HTTP client
+  - `react-day-picker`, `recharts`, `sonner`, `cmdk`, etc. as extra UI utilities
 
 ---
 
-## Struktur Proyek (Ringkas)
+## Project Structure (Overview)
 
-Struktur di bawah hanya menampilkan folder yang paling relevan untuk pengembangan sehari-hari.
+The structure below shows only the most relevant folders for daily development.
 
 ```txt
 src/
-  App.tsx              # Entry utama aplikasi (layout/landing)
-  main.tsx             # Entry Vite, render <App /> ke DOM
-  index.css            # Global styles + Tailwind layer
-  theme.css            # Tema (warna, font, dsb) untuk shadcn/tailwind
+  App.tsx              # Main application entry (layout/landing)
+  main.tsx             # Vite entry, renders <App /> into the DOM
+  index.css            # Global styles + Tailwind layers
+  theme.css            # Theme (colors, fonts, etc.) for shadcn/Tailwind
 
-  assets/              # Static assets (gambar, ikon, dll)
+  assets/              # Static assets (images, icons, etc.)
   lib/
-    utils.ts           # Helper umum, termasuk fungsi cn() untuk className
+    utils.ts           # Shared helpers, including cn() for className
 
-  hooks/               # Hooks umum (di luar shared/*)
-  modules/             # Modul/fitur tingkat tinggi (jika ada)
-  routes/              # Definisi routes/pages (bisa diisi React Router)
+  hooks/               # General-purpose hooks (outside shared/*)
+  modules/             # High-level modules/features (if used)
+  routes/              # Route/page definitions (for React Router)
 
   shared/
-    components/        # Komponen UI reusable
+    components/        # Reusable UI components
       navbar/
-        onboarding-navbar.tsx  # Contoh navbar berbasis shadcn NavigationMenu
+        onboarding-navbar.tsx  # Example navbar using shadcn NavigationMenu
 
-    hooks/             # Hooks bersama, misalnya useIsMobile
-    stores/            # Global state dengan Zustand (theme, auth, UI, dsb)
-    constant/          # Konstanta yang bisa di-reuse
+    hooks/             # Shared hooks, e.g. useIsMobile
+    stores/            # Global state with Zustand (theme, auth, UI state, etc.)
+    constant/          # Reusable constants
     types/             # TypeScript shared types
-    utils/             # Helper khusus domain
-    service/           # Abstraksi API/service (axios, dsb)
+    utils/             # Domain-specific helpers
+    service/           # API/service abstractions (axios, etc.)
 ```
 
-> Catatan: isi folder bisa berubah mengikuti kebutuhan project, tapi pola besar **`shared/*` untuk hal yang reusable** sebaiknya dipertahankan.
+> Note: you can adjust folders as needed, but keeping **`shared/*` for reusable pieces** is highly recommended.
 
 ---
 
-## Alias Path (vite.config.ts)
+## Path Aliases (vite.config.ts)
 
-Vite sudah dikonfigurasi dengan beberapa alias untuk memudahkan import:
+Vite is configured with several path aliases to simplify imports:
 
 - `@` → `./src`
 - `@shared-component` → `./src/shared/components`
@@ -97,17 +97,17 @@ Vite sudah dikonfigurasi dengan beberapa alias untuk memudahkan import:
 - `@shared-hooks` → `./src/shared/hooks`
 - `@shared-service` → `./src/shared/service`
 
-**Contoh pemakaian:**
+**Examples:**
 
 - Import asset: `import cp1 from "@/assets/img/cp1.png";`
-- Import komponen: `import OnboardingNavbar from "@shared-component/navbar/onboarding-navbar";`
-- Import hooks: `import { useIsMobile } from "@shared-hooks/use-mobile";`
+- Import component: `import OnboardingNavbar from "@shared-component/navbar/onboarding-navbar";`
+- Import hook: `import { useIsMobile } from "@shared-hooks/use-mobile";`
 
 ---
 
-## Environment & Mode
+## Environment & Modes
 
-Konfigurasi environment diatur lewat beberapa variable yang dibaca di `vite.config.ts`:
+Environment configuration is handled through variables read in `vite.config.ts`:
 
 - `VITE_APP_MODE`
   - `PRODUCTION`
@@ -115,77 +115,77 @@ Konfigurasi environment diatur lewat beberapa variable yang dibaca di `vite.conf
   - `DEVDOCKER`
   - `STAGING`
 
-- `VITE_APP_URL` → base URL aplikasi (dipakai sebagai `base` Vite)
-- `VITE_API_URL_ETERNNABLIS` → target proxy API untuk beberapa mode
-- `VITE_API_URL_EPKS` → target proxy API untuk mode lain (DEVDOCKER/STAGING)
+- `VITE_APP_URL` → app base URL (used as Vite `base`)
+- `VITE_API_URL_ETERNNABLIS` → API proxy target for some modes
+- `VITE_API_URL_EPKS` → API proxy target for other modes (DEVDOCKER/STAGING)
 
-### Proxy `/api`
+### `/api` Proxy
 
-Untuk pengembangan, request ke `/api` akan di-proxy ke backend sesuai mode:
+During development, requests to `/api` are proxied to the backend depending on the mode:
 
-- Mode **DEVELOPMENT / default**
+- **DEVELOPMENT / default** mode
   - `/api` → `VITE_API_URL_ETERNNABLIS`
 
-- Mode **DEVDOCKER / STAGING**
+- **DEVDOCKER / STAGING** modes
   - `/api` → `VITE_API_URL_EPKS`
 
-Contoh pemanggilan API di frontend:
+Example API call from the frontend:
 
-- Panggil `GET /api/users` di React → otomatis diteruskan ke URL backend sesuai environment.
+- Calling `GET /api/users` in React will automatically be forwarded to the backend URL configured for the current environment.
 
 ---
 
-## Menjalankan Proyek
+## Running the Project
 
-Di root project:
+From the project root:
 
 - **Install dependencies**
 
   ```bash
   pnpm install
-  # atau
+  # or
   npm install
-  # atau
+  # or
   yarn
   ```
 
-- **Development server**
+- **Start development server**
 
   ```bash
   pnpm dev
-  # atau npm run dev / yarn dev
+  # or npm run dev / yarn dev
   ```
 
-- **Build untuk produksi**
+- **Build for production**
 
   ```bash
   pnpm build
-  # menjalankan tsc -b + vite build
+  # runs tsc -b and vite build
   ```
 
-- **Preview hasil build**
+- **Preview production build**
 
   ```bash
   pnpm preview
   ```
 
-> Pastikan variable `VITE_APP_MODE` dan `VITE_APP_URL` sudah diset (misalnya di `.env.development.local`, `.env.production`, dll) sebelum build/preview untuk hasil yang sesuai environment.
+> Make sure `VITE_APP_MODE` and `VITE_APP_URL` are set (e.g. in `.env.development.local`, `.env.production`, etc.) before building/previewing so the environment behaves as expected.
 
 ---
 
-## Pola Penggunaan Tailwind & shadcn/ui
+## Tailwind & shadcn/ui Usage Patterns
 
-- Tailwind sudah aktif lewat `@tailwindcss/vite` dan konfigurasi Tailwind v4.
-- Style global dan tema warna didefinisikan di `src/index.css` dan `src/theme.css`.
-- Token yang umum:
-  - Warna: `bg-primary`, `bg-muted`, `text-muted-foreground`, dll
-  - Layout: `container`, `min-h-screen`, `mx-auto`, dsb
+- Tailwind is enabled through `@tailwindcss/vite` and Tailwind v4 configuration.
+- Global styles and theme colors are defined in `src/index.css` and `src/theme.css`.
+- Common tokens:
+  - Colors: `bg-primary`, `bg-muted`, `text-muted-foreground`, etc.
+  - Layout: `container`, `min-h-screen`, `mx-auto`, etc.
 
-### Helper `cn`
+### `cn` Helper
 
-- Terdapat helper `cn` di `src/lib/utils.ts`:
-  - Menggunakan `clsx` + `tailwind-merge`
-  - Dipakai untuk menggabungkan className secara aman dan rapi.
+- The `cn` helper in `src/lib/utils.ts`:
+  - Combines `clsx` and `tailwind-merge`
+  - Used to safely and cleanly merge `className` values.
 
 ```ts
 import { cn } from "@/lib/utils";
@@ -193,33 +193,33 @@ import { cn } from "@/lib/utils";
 <div className={cn("flex", isActive && "bg-primary")}>...</div>
 ```
 
-### Contoh Komponen shadcn/ui
+### Example shadcn/ui Component
 
-- `shared/components/navbar/onboarding-navbar.tsx` menunjukkan contoh penggunaan `NavigationMenu`:
-  - Import dari `@shared-component/ui/navigation-menu` (wrapper shadcn)
-  - Menggunakan `NavigationMenu`, `NavigationMenuList`, `NavigationMenuItem`, `NavigationMenuTrigger`, `NavigationMenuContent`, `NavigationMenuLink`, `navigationMenuTriggerStyle`
-  - Menggabungkan Tailwind utility + token shadcn (`bg-muted`, `text-muted-foreground`, dsb)
+- `shared/components/navbar/onboarding-navbar.tsx` demonstrates how to use `NavigationMenu`:
+  - Imported from `@shared-component/ui/navigation-menu` (shadcn wrapper)
+  - Uses `NavigationMenu`, `NavigationMenuList`, `NavigationMenuItem`, `NavigationMenuTrigger`, `NavigationMenuContent`, `NavigationMenuLink`, `navigationMenuTriggerStyle`
+  - Combines Tailwind utilities with shadcn tokens (`bg-muted`, `text-muted-foreground`, etc.)
 
-Untuk menambahkan komponen shadcn/ui lain:
+To add more shadcn/ui components:
 
-- Generate komponen via CLI shadcn (di project ini atau project lain lalu copy)
-- Taruh di `src/shared/components/ui/...`
-- Reuse di manapun dengan alias `@shared-component/ui/xxx`.
+- Generate components via the shadcn CLI (in this project or another) and copy them in
+- Place them under `src/shared/components/ui/...`
+- Reuse them anywhere via the alias `@shared-component/ui/xxx`.
 
 ---
 
-## Pola Penggunaan Zustand (Global State)
+## Zustand Usage Pattern (Global State)
 
-Package `zustand` sudah terinstall dan siap dipakai di folder `src/shared/stores`.
+The `zustand` package is installed and ready to be used under `src/shared/stores`.
 
-Pola rekomendasi:
+Recommended pattern:
 
-- Buat store per domain, misalnya:
-  - `src/shared/stores/theme-store.ts` → state theme (light/dark/system)
-  - `src/shared/stores/auth-store.ts` → user login, token, dsb
-  - `src/shared/stores/ui-store.ts` → sidebar open, dialog, dsb
+- Create one store per domain, for example:
+  - `src/shared/stores/theme-store.ts` → theme state (light/dark/system)
+  - `src/shared/stores/auth-store.ts` → user login, token, etc.
+  - `src/shared/stores/ui-store.ts` → sidebar open, dialogs, etc.
 
-Contoh (sketsa singkat pola, penamaan bebas):
+Example (rough sketch, naming is up to you):
 
 ```ts
 import { create } from "zustand";
@@ -235,7 +235,7 @@ export const useThemeStore = create<ThemeState>((set) => ({
 }));
 ```
 
-Penggunaan di komponen:
+Usage in components:
 
 ```tsx
 import { useThemeStore } from "@shared-stores/theme-store";
@@ -248,40 +248,40 @@ const Example = () => {
 };
 ```
 
-> Rekomendasi: simpan semua store Zustand di `shared/stores` dan selalu gunakan alias `@shared-stores/...` agar rapi dan mudah dipindah project.
+> Recommendation: keep all Zustand stores in `shared/stores` and always use the `@shared-stores/...` alias so code stays organized and easy to move between projects.
 
 ---
 
-## Menambah Halaman / Route
+## Adding Pages / Routes
 
-Karena sudah memakai React Router DOM, struktur yang disarankan:
+Since this project uses React Router DOM, the recommended structure is:
 
-- Definisikan konfigurasi route di `src/routes/*` (misalnya `routes/app-routes.tsx`).
-- Gunakan layout utama di `App.tsx` atau buat `Layout` terpisah di `shared/components/layout`.
-- Pisahkan halaman berdasarkan fitur di dalam `modules/` atau `features/`.
+- Define route configuration under `src/routes/*` (for example `routes/app-routes.tsx`).
+- Use a main layout in `App.tsx` or create a separate `Layout` under `shared/components/layout`.
+- Group pages by feature/domain inside `modules/` or `features/`.
 
-Contoh pola (konsep):
+Conceptual example pattern:
 
 - `src/routes/app-routes.tsx`
 - `src/modules/onboarding/pages/OnboardingPage.tsx`
 - `src/modules/dashboard/pages/DashboardPage.tsx`
 
-Kemudian di `App.tsx`, gunakan `<BrowserRouter>` dan `<Routes>` untuk merender halaman-halaman tersebut.
+Then in `App.tsx`, use `<BrowserRouter>` and `<Routes>` to render those pages.
 
 ---
 
-## Kontribusi / Penyesuaian
+## Contributing / Customizing
 
-- Anda bebas menambah atau memodifikasi struktur folder sesuai kebutuhan project.
-- Usahakan tetap menggunakan:
-  - Alias path yang sudah ada
-  - Folder `shared/*` untuk hal yang reusable
-  - Folder `modules/` / `features/` untuk domain bisnis
-- Saat menambah dependency baru, periksa kompatibilitas dengan React 19 dan Vite 7.
+- Feel free to add or modify folders and structure based on your project needs.
+- Try to keep:
+  - The existing path aliases
+  - The `shared/*` folder for reusable code
+  - `modules/` / `features/` folders for domain/business modules
+- When adding new dependencies, check compatibility with React 19 and Vite 7.
 
 ---
 
-## Lisensi
+## License
 
-Template ini dapat digunakan dan dimodifikasi bebas untuk kebutuhan pribadi maupun komersial, mengikuti lisensi bawaan dependency yang digunakan (React, Vite, Tailwind, shadcn/ui, dst).
+You can freely use and modify this template for personal or commercial projects, subject to the licenses of the underlying dependencies (React, Vite, Tailwind, shadcn/ui, etc.).
 
