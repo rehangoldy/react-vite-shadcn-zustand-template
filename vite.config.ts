@@ -20,7 +20,7 @@ const defaultConfig: UserConfig = {
       },
       {
         find: "@shared-constants",
-        replacement: path.resolve(__dirname, "./src/shared/constant"),
+        replacement: path.resolve(__dirname, "./src/shared/constants"),
       },
       {
         find: "@shared-types",
@@ -40,7 +40,7 @@ const defaultConfig: UserConfig = {
       },
       {
         find: "@shared-service",
-        replacement: path.resolve(__dirname, "./src/shared/service"),
+        replacement: path.resolve(__dirname, "./src/shared/services"),
       },
     ],
   },
@@ -48,11 +48,16 @@ const defaultConfig: UserConfig = {
 
 export default defineConfig(({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd(), "") };
+
+  const base = process.env.VITE_APP_URL && process.env.VITE_APP_URL !== "undefined" ? process.env.VITE_APP_URL : "/";
+  const devDockerBase =
+    process.env.VITE_API_URL_EPKS && process.env.VITE_API_URL_EPKS !== "undefined" ? process.env.VITE_API_URL_EPKS : "/";
+
   switch (process.env?.VITE_APP_MODE) {
     case "PRODUCTION":
       return {
         ...defaultConfig,
-        base: `${process.env.VITE_APP_URL}`,
+        base,
         // drop: ["console", "debugger"],
         // server: {
         //   proxy: {};
@@ -65,7 +70,7 @@ export default defineConfig(({ mode }) => {
     case "DEVELOPMENT":
       return {
         ...defaultConfig,
-        base: `${process.env.VITE_APP_URL}`,
+        base,
         server: {
           host: "localhost",
           proxy: {
@@ -90,7 +95,7 @@ export default defineConfig(({ mode }) => {
     case "DEVDOCKER":
       return {
         ...defaultConfig,
-        base: `${process.env.VITE_API_URL_EPKS}`,
+        base: devDockerBase,
         // drop: ["console", "debugger"],
         server: {
           proxy: {
@@ -115,7 +120,7 @@ export default defineConfig(({ mode }) => {
     case "STAGING":
       return {
         ...defaultConfig,
-        base: `${process.env.VITE_APP_URL}`,
+        base,
         server: {
           proxy: {
             "/api": {
@@ -139,7 +144,7 @@ export default defineConfig(({ mode }) => {
     default:
       return {
         ...defaultConfig,
-        base: `${process.env.VITE_APP_URL}`,
+        base,
         server: {
           proxy: {
             "/api": {
