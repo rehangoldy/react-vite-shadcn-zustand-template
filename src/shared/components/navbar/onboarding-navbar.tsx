@@ -10,7 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@shared-component/ui/navigation-menu";
+} from "@shared-ui/navigation-menu";
 
 const components: { title: string; href: string; description: string }[] = [
   {

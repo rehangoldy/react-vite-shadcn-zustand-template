@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router";
-import { lazy } from "react";
 import { modulePath } from "@shared-constants/path-module";
 import RouteOnboarding from "./route-onbording";
 

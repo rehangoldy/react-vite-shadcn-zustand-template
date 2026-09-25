@@ -19,6 +19,10 @@ const defaultConfig: UserConfig = {
         replacement: path.resolve(__dirname, "./src/shared/components"),
       },
       {
+        find: "@shared-ui",
+        replacement: path.resolve(__dirname, "./src/shared/ui"),
+      },
+      {
         find: "@shared-constants",
         replacement: path.resolve(__dirname, "./src/shared/constants"),
       },

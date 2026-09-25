@@ -90,6 +90,7 @@ Vite is configured with several path aliases to simplify imports:
 
 - `@` → `./src`
 - `@shared-component` → `./src/shared/components`
+- `@shared-ui` → `./src/shared/ui`
 - `@shared-constants` → `./src/shared/constant`
 - `@shared-types` → `./src/shared/types`
 - `@shared-utils` → `./src/shared/utils`
@@ -196,15 +197,15 @@ import { cn } from "@/lib/utils";
 ### Example shadcn/ui Component
 
 - `shared/components/navbar/onboarding-navbar.tsx` demonstrates how to use `NavigationMenu`:
-  - Imported from `@shared-component/ui/navigation-menu` (shadcn wrapper)
+  - Imported from `@shared-ui/navigation-menu` (shadcn wrapper)
   - Uses `NavigationMenu`, `NavigationMenuList`, `NavigationMenuItem`, `NavigationMenuTrigger`, `NavigationMenuContent`, `NavigationMenuLink`, `navigationMenuTriggerStyle`
   - Combines Tailwind utilities with shadcn tokens (`bg-muted`, `text-muted-foreground`, etc.)
 
 To add more shadcn/ui components:
 
 - Generate components via the shadcn CLI (in this project or another) and copy them in
-- Place them under `src/shared/components/ui/...`
-- Reuse them anywhere via the alias `@shared-component/ui/xxx`.
+- Place them under `src/shared/ui/...`
+- Reuse them anywhere via the alias `@shared-ui/xxx`.
 
 ---
 
